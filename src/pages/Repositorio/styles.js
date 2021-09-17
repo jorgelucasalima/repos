@@ -140,3 +140,27 @@ export const PageActions = styled.div`
   }
 
 `
+export const FilterButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    outline: 0;
+    border: 0;
+    background: #222;
+    color: #FFF;
+    margin-top: 50px;
+    padding: 6px 15px;
+    border-radius: 4px;
+
+    &:nth-child(${props => props.active + 1}){
+      background: #0071db;
+      color:#FFF;
+    }
+
+
+  }
+
+
+`
