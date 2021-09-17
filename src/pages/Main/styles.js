@@ -5,8 +5,8 @@ export const Container = styled.div`
   background: #FFF;
   border-radius: 4px;
   box-shadow: 0 0px 20px rgba(0,0,0, 0.2);
-  padding: 50px;
-  margin: 80px;
+  padding: 60px;
+  margin: 60px;
 
   h1 {
     font-size: 20px;
@@ -23,7 +23,7 @@ export const Container = styled.div`
   `;
 
 export const Form = styled.form`
-  margin-top: 30px ;
+  margin-top: 40px ;
   display: flex;
   flex-direction: row;
 
@@ -51,6 +51,9 @@ const animate = keyframes`
 `
 
 
+export const List = styled.ul``
+
+
 
 export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
@@ -67,8 +70,8 @@ export const SubmitButton = styled.button.attrs(props => ({
 
   &[disabled]{
     cursor: not-allowed;
-    opacity: 0.4;
-  };
+    opacity: 0.6;
+  }
 
   ${props => props.loading &&
     css `
@@ -76,8 +79,10 @@ export const SubmitButton = styled.button.attrs(props => ({
         animation: ${animate} 2s linear infinite;
       }
     `
-  
+
   }
 
-  `;
+`;
+
+
 
