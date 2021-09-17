@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import { Container } from './styles';
+import { Container, Owner, Loading } from './styles';
 import api from '../../services/api'
 
-export default function Repositorio(){
+export default function Repositorio({match}){
 
   const [repositorio, setRepositorio] = useState({})
   const [issues, setIssues] = useState([])
@@ -12,7 +12,7 @@ export default function Repositorio(){
   useEffect(() => {
     
     async function load(params) {
-      const nomeRepo = decodeURIComponent(Math.params.repositorio)
+      const nomeRepo = decodeURIComponent(match.params.repositorio)
     
       const [repositorioData, issuesData] = await Promise.all([
         api.get(`/repos/${nomeRepo}`),
@@ -35,9 +35,25 @@ export default function Repositorio(){
     
   }, [match.params.repositorio]);
   
+
+  if (loading) {
+    return(
+      <Loading>
+        <h1>Carregando...</h1>
+      </Loading>
+    )
+  }
+
   return(
     <Container>
-
+      <Owner>
+        <img 
+        src={repositorio.owner.avatar_url} 
+        alt={repositorio.owner.login} 
+        />
+        <h1>{repositorio.name}</h1>
+        <p>{repositorio.description}</p>
+      </Owner>
     </Container>
   )
 }
