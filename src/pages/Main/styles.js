@@ -51,13 +51,16 @@ const animate = keyframes`
 `
 
 
-export const List = styled.ul``
+export const List = styled.ul`
+  list-style: none;
+  margin-top: 20px;
+`
 
 
 
 export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
-  disabled: 'props.loading',
+  disabled: props.loading,
 }))`
   background: #0D2636;
   border: 0;

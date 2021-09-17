@@ -16,13 +16,13 @@ export default function Main(){
   const handleSubmit = useCallback((e) => {    
     e.preventDefault()
 
-    async function submit(params) {
+    async function submit() {
       setLoading(true)
       try{
         const response = await api.get(`repos/${newRepo}`)
     
         const data = {
-          name: response.data.full_name
+          name: response.data.full_name,
         }  
 
         setRepositorios([...repositorios, data])
@@ -62,7 +62,7 @@ export default function Main(){
         onChange={handleInputChange}
         />
       
-        <SubmitButton Loading={loading ? 1 : 0}>
+        <SubmitButton loading={loading ? 1 : 0}>
 
           {loading ? (
             <FaSpinner color="#FFF" size={24} />
