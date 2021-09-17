@@ -1,9 +1,43 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import { Container } from './styles';
+import api from '../../services/api'
 
 export default function Repositorio(){
+
+  const [repositorio, setRepositorio] = useState({})
+  const [issues, setIssues] = useState([])
+  const [loading, setLoading] = useState(true)
+
+
+  useEffect(() => {
+    
+    async function load(params) {
+      const nomeRepo = decodeURIComponent(Math.params.repositorio)
+    
+      const [repositorioData, issuesData] = await Promise.all([
+        api.get(`/repos/${nomeRepo}`),
+        api.get(`/repos/${nomeRepo}/issues`,{
+          params: {
+            state: 'open',
+            per_page: 5
+          }
+        })
+      ])
+
+      setRepositorio(repositorioData.data)
+      setIssues(issuesData.data)
+      setLoading(false)
+
+    }
+
+    load()
+
+    
+  }, [match.params.repositorio]);
+  
   return(
-    <div>
-      <h1>Repositorio</h1>
-    </div>
+    <Container>
+
+    </Container>
   )
 }
