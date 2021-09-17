@@ -39,6 +39,43 @@ export const Form = styled.form`
   `;
 
 
+
+export const List = styled.ul`
+  list-style: none;
+  margin-top: 20px;  
+
+  li {
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    & + li {
+      border-top: 1px solid #eee;
+    }
+  }
+
+  a {
+    color: #0D2636;
+    text-decoration: none; 
+  }
+
+
+`
+
+export const DeleteButton = styled.button.attrs({
+  type: 'button'
+})`
+  background: transparent;
+  color: #0D2636;
+  border: 0;
+  padding: 8px 7px;
+  outline: 0;
+  border-radius: 3px;
+`
+
+
 //Animação do Botão - button
 const animate = keyframes`
   from{
@@ -49,13 +86,6 @@ const animate = keyframes`
   }
 
 `
-
-
-export const List = styled.ul`
-  list-style: none;
-  margin-top: 20px;
-`
-
 
 
 export const SubmitButton = styled.button.attrs(props => ({
